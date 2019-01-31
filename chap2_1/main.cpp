@@ -68,7 +68,9 @@ void startGame(){
 	int number = ( rand() % max ) + min;
 	int player_guess = 0;
 	int bot_guess = 0;
-	int bot_guess_temp = 0;
+	int temp = 0;
+	int guesses = 0;
+	int bot_guesses = 0;
 		
 	std::cout << "Guess a number between " << min << " and " << max << " . " << std::endl << std::endl; 
 
@@ -76,19 +78,30 @@ void startGame(){
 		srand(static_cast<unsigned int>(time(0)));
 		if(bPlayerTurn){
 			std::cout << "Your guess:  ";
-			std::cin >> player_guess;
+			std::cin >> temp;
+
+			guesses++;		
+
+			if(temp != number){
+				if(temp > number)
+					std::cout << std::endl << "Too high!" << std::endl << std::endl;
+				else 
+					std::cout << std::endl << "Too low!" << std::endl << std::endl;	
+			}
+			player_guess = temp;
 		} else {
-			bot_guess_temp = ((rand() % max ) + min);
-			std::cout << std::endl << "Bot guess:  " << bot_guess_temp << std::endl;
-			bot_guess = bot_guess_temp;
+			temp = ((rand() % max ) + min);
+			std::cout << std::endl << "Bot guess:  " << temp << std::endl;
+			bot_guesses++;
+			bot_guess = temp;
 		}
 		bPlayerTurn = !bPlayerTurn;
 	}
 	
 	if(player_guess == number)
-		std::cout << "You guessed it!" << std::endl;
+		std::cout << "You guessed it in " << guesses << " guesses!" << std::endl;
 	else
-		std::cout << "You lost. BOT guessed it before you." << std::endl << std::endl;
+		std::cout << "You lost. BOT guessed it in " << bot_guesses << " guesses before you." << std::endl << std::endl;
 }
 
 int main(){
