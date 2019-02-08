@@ -1,0 +1,25 @@
+create words with respected hints array
+
+show title 
+preview commands hint and quit 
+
+foreach word in the words array 
+	random letters
+	display jumbled
+	get user input 
+		if input == hint 
+			display hint, remove X points from total of possible_points 
+		if input != the word 
+			remove Y points from total of possible points 
+		if input == the word 
+			give Z total points
+			continue...
+
+once through all words, display total of points
+ask user if they want to go through again 
+	get user input 
+		if input == yes 
+				go to 6 
+		if input == no 
+				return 0, exit.
+
